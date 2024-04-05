@@ -19,7 +19,7 @@ export default async function Home() {
       {sections.map((section) => (
         <section className="p-4" key={section.title}>
           <h2 className="text-large mb-4">{section.title}</h2>
-          <article className="grid gap-4 grid-cols-3">
+          <article className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {section.posts.map((post) => (
               <Card key={post.id} title={post.title}>
                 <CardHeader>

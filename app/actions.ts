@@ -30,10 +30,11 @@ export async function trackRead(section: string, contentId: number) {
   );
 }
 
-export async function listMostReadPosts(): Promise<Post[]> {
+export async function listMostReadPosts(limit = 5): Promise<Post[]> {
   const reads: QueryResult<{ content_id: number; section: string }> =
     await pool.query(
-      "SELECT content_id, section FROM content_read GROUP BY content_id, section ORDER BY COUNT(*) DESC LIMIT 10"
+      "SELECT content_id, section FROM content_read GROUP BY content_id, section ORDER BY COUNT(*) DESC LIMIT $1",
+      [limit]
     );
 
   const ids = reads.rows.map((post) => post.content_id);
