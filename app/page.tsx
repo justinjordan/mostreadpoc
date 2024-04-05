@@ -2,6 +2,7 @@ import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/react";
 import { listMostReadPosts, listPosts } from "./actions";
 import Link from "next/link";
 
+export const dynamic = "force-dynamic";
 export default async function Home() {
   const sections = [
     {
